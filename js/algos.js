@@ -92,7 +92,7 @@ function heapsort(data) {
 }
 
 function quicksort() {
-    quicksortin(csvData, 'median', 0, csvData.length - 1);
+    quicksortin(csvData, 'middle', 0, csvData.length - 1);
 }
 
 function quicksortin(aa, pivot_type, left, right) {
@@ -138,11 +138,11 @@ function choose_pivot(aa, pivot_type, left, right) {
     } else if (pivot_type === 'middle') {
         pivot = Math.round((left + right) / 2)
     } else if (pivot_type === 'median') {
-        if (left === right - 1) {
-            pivot = 0;
-        } else {
+        // if (left === right - 1) {
+        //     pivot = 0;
+        // } else {
             var list1 = [];
-            for (var i = left; i < right; i++) {
+            for (var i = left; i <= right; i++) {
                 list1.push(distanceFromAnnecy(csvData[i]));
             }
 
@@ -152,7 +152,7 @@ function choose_pivot(aa, pivot_type, left, right) {
                 return number > median(list1);
             });
             pivot = index;
-        }
+        // }
 
         console.log(pivot);
     } else {
@@ -195,7 +195,28 @@ function choose_pivot(aa, pivot_type, left, right) {
 // }
 
 function quick3sort(data) {
-    console.log("implement me !");
+    var xmasList = ['Alex', 'Vincent', "Antoine", "Lea", "Clem", "Stessy", "VincentR", "Loris", "AlexB", "Thomas", "Marie", "Fred"];
+    var secondList = ['Alex', 'Vincent', "Antoine", "Lea", "Clem", "Stessy", "VincentR", "Loris", "AlexB", "Thomas", "Marie", "Fred"];
+
+    while (xmasList.length > 0) {
+        var firstNum = Math.floor(Math.random() * (xmasList.length));
+        var secondNum = Math.floor(Math.random() * (xmasList.length));
+        var first = xmasList.splice(firstNum, 1);
+        var second = secondList.splice(secondNum, 1);
+
+        while (first === second) {
+            secondList.push(second);
+            secondNum = Math.floor(Math.random() * (xmasList.length));
+            second = secondList.splice(secondNum, 1);
+        }
+
+
+
+        // console.log("1: "+xmasList);
+        console.log(first + " => " + second);
+        // console.log("2: "+secondList);
+    }
+
 
 }
 
@@ -209,6 +230,19 @@ function median(values) {
         return values[half];
     else
         return (values[half-1] + values[half]) / 2.0;
+}
+
+function medianPivot(left, right) {
+    var list1 = [];
+    for (var i = left; i <= right; i++) {
+        list1.push(distanceFromAnnecy(csvData[i]));
+    }
+
+    console.log(list1);
+
+    var index = list1.findIndex(function(number) {
+        return number > median(list1);
+    });
 }
 
 
