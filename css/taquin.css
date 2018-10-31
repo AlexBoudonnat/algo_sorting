@@ -26,6 +26,7 @@ td {
     background: whitesmoke;
     color: dimgrey;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, .5);
+    /*transition: all 0.5s ease-in-out;*/
 }
 
 .cell1, .cell3, .cell5, .cell7, .cell9 {
@@ -47,9 +48,7 @@ td {
     visibility: hidden;
 }
 
-span #shuffle,
-span #resolve,
-span #ordered {
+button {
     display: block;
     width: 20vw;
     margin: 0 auto 10px;
@@ -57,4 +56,42 @@ span #ordered {
     background: whitesmoke;
     border-radius: 5px;
     font-weight: bold;
+}
+
+button img {
+    width: 100%;
+}
+
+#directionButtons {
+    width: 110px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+#up, #left, #right, #down {
+    margin-bottom: 5px;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+}
+
+#up {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+#left {
+    grid-row: 2;
+    grid-column: 1;
+}
+
+#right {
+    grid-row: 2;
+    grid-column: 3;
+}
+
+#down {
+    grid-row: 3;
+    grid-column: 2;
 }
